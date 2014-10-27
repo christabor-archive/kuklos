@@ -1,0 +1,6 @@
+body {
+	background-color: #ffd34b;
+}
+body, h1, strong, pre {
+    color: black;
+}

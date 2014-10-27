@@ -1,0 +1,7 @@
+body {
+	background-color: #fffcc4;
+	color: black;
+}
+body, h1, strong, pre {
+    color: black;
+}

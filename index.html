@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>Kuklos</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Architects+Daughter' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+    * {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    body {
+        font-size: 20px;
+        line-height: 30px;
+        padding: 0;
+        margin: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+    #container {
+        margin: 0 auto;
+        width: 80%;
+        padding: 30px 0;
+    }
+    h1 {
+        margin-top: 1em;
+        padding: 20px 0;
+        color: #e5adba;
+    }
+    pre {
+        padding: 0 30px;
+        margin: 0 0 0 30px;
+        color: white;
+        white-space: pre-wrap;
+        text-align: left;
+        border-radius: 10px;
+        opacity: 0.7;
+        font-size: 80%;
+    }
+    #current-time span {
+        line-height: 40px;
+        display: inline-block;
+        margin: 20px auto;
+        font-size: 120%;
+        font-family: 'Architects Daughter', cursive;
+    }
+    .lead {
+        font-size: 120%;
+    }
+    strong {
+        color: #e5adba;
+    }
+    .columns {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .col {
+        font-size: 16px;
+        -webkit-flex: 1;
+    }
+    @media handheld, screen and (max-width: 600px) {
+        .columns {
+            display: block;
+        }
+        pre {
+            padding: 5px 15px;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="#" data-kuklos>
+</head>
+<body>
+    <div id="container">
+        <h1>Welcome to Kuklos, a time-based css styler.</h1>
+        <div id="current-time"></div>
+        <div class="columns">
+            <div class="col">
+                <p class="lead">Kuklos ("cycle" in Greek) is a jquery plugin that allows you to easily customize your website based on time of day, and be as granular as you could possibly want.</p>
+                <h4>How does it work?</h4>
+                <p>Simply add in the plugin, create an empty link in the <strong>head</strong> with the <strong>data-attribute "data-kuklos"</strong>, call the function on <strong>dom.ready</strong>, sending it a map of times and file paths.</p>
+                <p>Note: times <strong>must</strong> be in the format <strong>hour:minute:{am/pm} (e.g. 1:20pm, or 3:30am)</strong>. Bad inputs will simply be <em>discarded</em>. Also note, filenames must <strong>not</strong> have a colon, as they are not acceptable file formats.</p>
+            </div>
+            <div class="col">
+                <pre>
+                    <code>
+var css_root = 'times/';
+$.kuklos({
+    // optional: render time and the stylesheet in use
+    show_current_time: '#dom-element',
+    times: {
+    '9:30am': css_root + '930am.css',
+    '1:00pm': css_root + '1pm.css',
+    '9:20pm': css_root + '920pm.css',
+    '11:20pm': css_root + '1120pm.css'
+    }
+});
+            </code>
+        </pre>
+    </div>
+</div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="jquery.kuklos.js"></script>
+<script>
+$(document).ready(function(){
+    var css_root = 'times/';
+    $.kuklos({
+        show_current_time: '#current-time',
+        times: {
+            '9:30:am': css_root + '930am.css',
+            '1:00:pm': css_root + '1pm.css',
+            '9:20:pm': css_root + '920pm.css',
+            '10:00:pm': css_root + '10pm.css',
+            // intentionally bad input
+            '11:20:pm': css_root + '11:20pm.css'
+        }
+    });
+});
+</script>
+</body>
+</html>
